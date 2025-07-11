@@ -76,6 +76,10 @@ module Sus
 				# @parameter seconds [Float] The duration in seconds.
 				# @returns [String]
 				private def format_duration(seconds)
+					if seconds.nil?
+						return "N/A"
+					end
+					
 					if seconds < 1e-6
 						"#{(seconds * 1e9).round(2)}ns"
 					elsif seconds < 1e-3

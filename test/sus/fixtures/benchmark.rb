@@ -25,4 +25,29 @@ describe Sus::Fixtures::Benchmark do
 			sleep(0.0001)
 		end
 	end
+	
+	describe Sus::Fixtures::Benchmark::Measure do
+		let(:instance) {subject.build(Sus.base, "test")}
+		
+		with "#to_s" do
+			it "returns a string representation of the measure" do
+				expect(instance.to_s).to be == "measure test"
+			end
+		end
+		
+		with "#leaf?" do
+			it "returns true for a leaf measure" do
+				expect(instance).to be(:leaf?)
+			end
+		end
+		
+		with "#print" do
+			let(:output) {Sus::Output.buffered}
+			
+			it "prints the measure description to the output" do
+				instance.print(output)
+				expect(output.string).to be(:include?, "measure test")
+			end
+		end
+	end
 end

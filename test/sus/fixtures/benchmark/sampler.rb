@@ -34,4 +34,14 @@ describe Sus::Fixtures::Benchmark::Sampler do
 		# And we expect the sampler to have converged:
 		expect(sampler).to be(:converged?)
 	end
+	
+	it "formats durations < 1μs as nanoseconds" do
+		sampler.add(0.0000005) # 0.5μs
+		expect(sampler.to_s).to be =~ /500.0ns/
+	end
+	
+	it "formats durations >= 1s as seconds" do
+		sampler.add(1.5)
+		expect(sampler.to_s).to be =~ /1\.5s/
+	end
 end
