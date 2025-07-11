@@ -26,7 +26,7 @@ module Sus
 				end
 				
 				# The minimum number of samples required for convergence.
-				# @returns[Integer]
+				# @returns [Integer]
 				attr :minimum
 				
 				# Adds a new timing value to the sample set.
@@ -39,19 +39,19 @@ module Sus
 				end
 				
 				# Returns the number of samples collected.
-				# @returns[Integer]
+				# @returns [Integer]
 				def size
 					@count
 				end
 				
 				# Returns the mean (average) of the collected samples.
-				# @returns[Float]
+				# @returns [Float]
 				def mean
 					@mean
 				end
 				
 				# Returns the variance of the collected samples.
-				# @returns[Float | Nil] Returns nil if not enough samples.
+				# @returns [Float | Nil] Returns nil if not enough samples.
 				def variance
 					if @count > 1
 						@variance_accumulator / (@count)
@@ -59,14 +59,14 @@ module Sus
 				end
 				
 				# Returns the standard deviation of the collected samples.
-				# @returns[Float | Nil] Returns nil if not enough samples.
+				# @returns [Float | Nil] Returns nil if not enough samples.
 				def standard_deviation
 					v = self.variance
 					v ? Math.sqrt(v) : nil
 				end
 				
 				# Returns the standard error of the mean for the collected samples.
-				# @returns[Float | Nil] Returns nil if not enough samples.
+				# @returns [Float | Nil] Returns nil if not enough samples.
 				def standard_error
 					sd = self.standard_deviation
 					sd ? sd / Math.sqrt(@count) : nil
@@ -74,7 +74,7 @@ module Sus
 				
 				# Formats a duration in seconds as a human-readable string.
 				# @parameter seconds [Float] The duration in seconds.
-				# @returns[String]
+				# @returns [String]
 				private def format_duration(seconds)
 					if seconds < 1e-6
 						"#{(seconds * 1e9).round(2)}ns"
@@ -88,7 +88,7 @@ module Sus
 				end
 				
 				# Returns a summary string of the sample statistics.
-				# @returns[String]
+				# @returns [String]
 				def to_s
 					"#{self.size} samples, mean: #{format_duration(self.mean)}, standard deviation: #{format_duration(self.standard_deviation)}, standard error: #{format_duration(self.standard_error)}"
 				end
@@ -108,7 +108,7 @@ module Sus
 				# Assuming we are measuring in seconds, this tells us "Based on my current data, I am %confident that the true mean is within ±current_margin_of_error seconds of my measured mean." In other words, increasing the number of samples will make the margin of error smaller for the same confidence level. Given that we are asked to be at least some confidence level, we can calculate whether this is true or not yet (i.e. whether we need to keep sampling).
 				#
 				# The only caveat to this, is that we need to have at least @minimum samples before we can make this determination. If we have less than @minimum samples, we will return false. The reason for this is that we need a minimum number of samples to calculate a meaningful standard error and margin of error.
-				# @returns[Boolean] true if the sample size has converged, false otherwise.
+				# @returns [Boolean] true if the sample size has converged, false otherwise.
 				def converged?
 					return false if @count < @minimum
 					# Calculate the current mean and standard error

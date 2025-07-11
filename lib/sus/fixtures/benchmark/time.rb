@@ -9,7 +9,7 @@ module Sus
 			# Represents a timing sample for benchmarking, including user, system, and real time.
 			class Time
 				# Measures the execution time of a block, returning a new {Time} object with user, system, and real time.
-				# @returns[Time] The measured timing sample.
+				# @returns [Time] The measured timing sample.
 				def self.measure
 					t0, r0 = Process.times, Process.clock_gettime(Process::CLOCK_MONOTONIC)
 					yield
@@ -33,23 +33,23 @@ module Sus
 				end
 				
 				# The user CPU time in seconds.
-				# @returns[Float]
+				# @returns [Float]
 				attr :user
 				# The system CPU time in seconds.
-				# @returns[Float]
+				# @returns [Float]
 				attr :system
 				# The real (wall clock) time in seconds.
-				# @returns[Float]
+				# @returns [Float]
 				attr :real
 
 				# Returns a string representation of the real time in seconds.
-				# @returns[String]
+				# @returns [String]
 				def to_s
 					"#{self.real}s"
 				end
 				
 				# Returns a detailed string representation of the timing sample.
-				# @returns[String]
+				# @returns [String]
 				def inspect
 					"#<#{self.class} user=#{self.user}s system=#{self.system}s real=#{self.real}s>"
 				end

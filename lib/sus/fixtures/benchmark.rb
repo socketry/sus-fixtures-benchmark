@@ -27,7 +27,7 @@ module Sus
 				# @parameter description [String] The description of the measure.
 				# @parameter unique [Boolean] Whether the measure should have a unique identity.
 				# @parameter block [Proc] The block to execute for the measure.
-				# @returns[Class] The new measure class.
+				# @returns [Class] The new measure class.
 				def self.build(parent, description, unique: true, &block)
 					base = Class.new(parent)
 					base.extend(self)
@@ -43,7 +43,7 @@ module Sus
 				end
 				
 				# Returns true if this is a leaf measure.
-				# @returns[Boolean]
+				# @returns [Boolean]
 				def leaf?
 					true
 				end
@@ -56,7 +56,7 @@ module Sus
 				end
 				
 				# Returns a string representation of the measure.
-				# @returns[String]
+				# @returns [String]
 				def to_s
 					"measure #{self.description}"
 				end
