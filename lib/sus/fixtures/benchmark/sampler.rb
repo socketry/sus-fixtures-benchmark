@@ -3,13 +3,56 @@
 # Released under the MIT License.
 # Copyright, 2025, by Samuel Williams.
 
-require "distribution"
-
 module Sus
 	module Fixtures
 		module Benchmark
 			# Represents a statistical sampler for benchmarking, collecting timing samples and computing statistics.
 			class Sampler
+				B = [
+					1.570796288, 0.03706987906, -0.8364353589e-3,
+					-0.2250947176e-3, 0.6841218299e-5, 0.5824238515e-5,
+					-0.104527497e-5, 0.8360937017e-7, -0.3231081277e-8,
+					0.3657763036e-10, 0.6936233982e-12
+				]
+				private_constant :B
+				
+				# Return the inverse CDF or P-value of the corresponding integral
+				private def quantile(qn)
+					if qn < 0.0 || qn > 1.0
+						raise ArgumentError, "qn must be in the range [0, 1]"
+					end
+					
+					# Let's cache the standard normal quantiles for common values:
+					case qn
+					when 0.5
+						return 0.0
+					when 0.95
+						return 1.644853627
+					when 0.96
+						return 1.750686073
+					when 0.97
+						return 1.880793609
+					when 0.98
+						return 2.053748911
+					when 0.99
+						return 2.326347874
+					end
+					
+					w1 = qn
+					w3 = -Math.log(4.0 * w1 * (1.0 - w1))
+					w1 = B[0]
+					
+					1.upto(10) do |i|
+						w1 += B[i] * w3**i
+					end
+					
+					if qn >= 0.5
+						return Math.sqrt(w1 * w3)
+					else
+						return -Math.sqrt(w1 * w3)
+					end
+				end
+				
 				# Initializes a new {Sampler} object with an optional minimum sample size, confidence level, and margin of error.
 				# @parameter minimum [Integer] The minimum number of samples required before convergence can be determined (default: 8).
 				# @parameter confidence [Float] The confidence level (default: 0.95). If we repeated this measurement process many times, % of the calculated intervals would include the true value we’re trying to estimate.
@@ -18,7 +61,10 @@ module Sus
 					@minimum = minimum
 					@confidence = confidence
 					@margin_of_error = margin_of_error
-					@z_score = Distribution::Normal.p_value((1 + @confidence) / 2.0)
+					
+					# Calculate the z-score for the given confidence level:
+					@z_score = quantile((1 + @confidence) / 2.0)
+					
 					# Welford's algorithm for calculating mean and variance in a single pass:
 					@count = 0
 					@mean = 0.0

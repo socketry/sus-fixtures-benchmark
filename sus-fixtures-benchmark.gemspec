@@ -25,7 +25,5 @@ Gem::Specification.new do |spec|
 	
 	spec.required_ruby_version = ">= 3.2"
 	
-	spec.add_dependency "distribution", "~> 0.8"
-	spec.add_dependency "prime"
 	spec.add_dependency "sus", "~> 0.31"
 end
