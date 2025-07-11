@@ -12,22 +12,15 @@ bundle add sus-fixtures-benchmark
 
 ## Usage
 
-``` ruby
-require "sus/fixtures/benchmark"
-
-include Sus::Fixtures::Benchmark
-
-measure "my benchmark" do |repeats|
-	# code to benchmark
-	repeats.times{sleep 0.001}
-end
-```
-
-Note that `repeats` is not an integer, but an instance of `Sus::Fixtures::Benchmark::Repeats`. The block will be executed multiple times until the benchmark converges, meaning that the results are stable enough to be considered reliable.
+Please see the [project documentation](https://suspecting.github.io/sus-fixtures-benchmark/) for more details.
 
 ## Releases
 
-There are no documented releases.
+Please see the [project releases](https://suspecting.github.io/sus-fixtures-benchmark/releases/index) for all releases.
+
+### v0.1.0
+
+  - Added `Sus::Fixtures::Benchmark::Repeats` which is not an integer, but an instance that allows the block to be executed multiple times until the benchmark converges.
 
 ## Contributing
 
