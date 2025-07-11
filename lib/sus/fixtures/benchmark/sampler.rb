@@ -27,15 +27,15 @@ module Sus
 					when 0.5
 						return 0.0
 					when 0.95
-						return 1.644853627
+						return 1.6448536269514722
 					when 0.96
-						return 1.750686073
+						return 1.7506860712521692
 					when 0.97
-						return 1.880793609
+						return 1.8807936081512509
 					when 0.98
-						return 2.053748911
+						return 2.0537489106318225
 					when 0.99
-						return 2.326347874
+						return 2.3263478740408408
 					end
 					
 					w1 = qn
