@@ -25,6 +25,10 @@ end
 
 Note that `repeats` is not an integer, but an instance of `Sus::Fixtures::Benchmark::Repeats`. The block will be executed multiple times until the benchmark converges, meaning that the results are stable enough to be considered reliable.
 
+## Releases
+
+There are no documented releases.
+
 ## Contributing
 
 We welcome contributions to this project.

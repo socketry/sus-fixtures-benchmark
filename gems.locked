@@ -52,6 +52,9 @@ GEM
       build-files (~> 1.6)
       markly (~> 0.13)
       rugged
+    bake-releases (0.3.0)
+      bake (~> 0.21)
+      markly (~> 0.8)
     bake-test (0.3.0)
       bake
     bake-test-external (0.6.1)
@@ -227,6 +230,7 @@ PLATFORMS
 DEPENDENCIES
   bake-gem
   bake-modernize
+  bake-releases (~> 0.3.0)
   bake-test
   bake-test-external
   covered

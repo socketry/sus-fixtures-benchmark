@@ -23,3 +23,5 @@ group :test do
 	gem "bake-test"
 	gem "bake-test-external"
 end
+
+gem "bake-releases", "~> 0.3.0", group: :maintenance
