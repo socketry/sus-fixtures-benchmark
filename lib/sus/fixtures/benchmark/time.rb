@@ -53,61 +53,6 @@ module Sus
 				def inspect
 					"#<#{self.class} user=#{self.user}s system=#{self.system}s real=#{self.real}s>"
 				end
-				
-				# Adds two timing samples together.
-				# @parameter other [Time] The other timing sample to add.
-				# @returns[Time]
-				def +(other)
-					self.class.new(
-						self.user + other.user,
-						self.system + other.system,
-						self.real + other.real,
-					)
-				end
-				
-				# Divides the timing sample by a scalar value.
-				# @parameter other [Numeric] The value to divide by.
-				# @returns[Time]
-				def /(other)
-					self.class.new(
-						self.user / other,
-						self.system / other,
-						self.real / other,
-					)
-				end
-				
-				# Multiplies the timing sample by a scalar value.
-				# @parameter other [Numeric] The value to multiply by.
-				# @returns[Time]
-				def *(other)
-					self.class.new(
-						self.user * other,
-						self.system * other,
-						self.real * other,
-					)
-				end
-				
-				# Subtracts another timing sample from this one.
-				# @parameter other [Time] The other timing sample to subtract.
-				# @returns[Time]
-				def -(other)
-					self.class.new(
-						self.user - other.user,
-						self.system - other.system,
-						self.real - other.real,
-					)
-				end
-				
-				# Raises each component of the timing sample to a power.
-				# @parameter other [Numeric] The exponent value.
-				# @returns[Time]
-				def **(other)
-					self.class.new(
-						self.user ** other,
-						self.system ** other,
-						self.real ** other,
-					)
-				end
 			end
 		end
 	end
