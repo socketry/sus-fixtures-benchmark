@@ -18,6 +18,10 @@ Please see the [project documentation](https://suspecting.github.io/sus-fixtures
 
 Please see the [project releases](https://suspecting.github.io/sus-fixtures-benchmark/releases/index) for all releases.
 
+### v0.2.0
+
+  - Added `exactly(count)` method to `Sus::Fixtures::Benchmark::Repeats` which returns an `Exactly` instance for fixed-count benchmarking.
+
 ### v0.1.0
 
   - Added `Sus::Fixtures::Benchmark::Repeats` which is not an integer, but an instance that allows the block to be executed multiple times until the benchmark converges.
