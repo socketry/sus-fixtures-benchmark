@@ -113,6 +113,9 @@ end
 ```
 
 ### Parameter Reference
+
+You should try to avoid deviating from the defaults.
+
   - **`minimum`** (Integer): Minimum samples before convergence (default: 8). 
     - **Lower `minimum`**: Quick development feedback (e.g., `minimum: 3`)
     - **Higher `minimum`**: High-variance operations (e.g., `minimum: 30`)
