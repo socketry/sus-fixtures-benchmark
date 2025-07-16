@@ -15,7 +15,7 @@ module Sus
 				def initialize(sampler)
 					@sampler = sampler
 				end
-
+				
 				# @attribute [Sampler] The sampler that collects timing data.
 				attr :sampler
 				
@@ -35,7 +35,7 @@ module Sus
 						sample!(block)
 					end
 				end
-
+				
 				# Represents a benchmarking helper that executes a block a fixed number of times.
 				class Exactly
 					# Initializes a new {Exactly} object with a sampler and a fixed count.
@@ -48,10 +48,10 @@ module Sus
 					
 					# @attribute [Sampler] The sampler that collects timing data.
 					attr :sampler
-
+					
 					# @attribute [Integer] The number of times to execute the block.
 					attr :count
-
+					
 					# Samples the execution time of the given block and adds the result to the sampler.
 					# @parameter block [Proc] The block to benchmark.
 					private def sample!(block)

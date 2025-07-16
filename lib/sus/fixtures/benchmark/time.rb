@@ -41,7 +41,7 @@ module Sus
 				# The real (wall clock) time in seconds.
 				# @returns [Float]
 				attr :real
-
+				
 				# Returns a string representation of the real time in seconds.
 				# @returns [String]
 				def to_s
