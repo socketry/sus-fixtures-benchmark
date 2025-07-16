@@ -26,14 +26,18 @@ module Sus
 				# @parameter parent [Class] The parent test context class.
 				# @parameter description [String] The description of the measure.
 				# @parameter unique [Boolean] Whether the measure should have a unique identity.
+				# @parameter **options [Hash] Options to pass to the Sampler constructor.
 				# @parameter block [Proc] The block to execute for the measure.
 				# @returns [Class] The new measure class.
-				def self.build(parent, description, unique: true, &block)
+				def self.build(parent, description, unique: true, **options, &block)
 					base = Class.new(parent)
 					base.extend(self)
 					base.description = description
 					base.identity = Identity.nested(parent.identity, base.description, unique: unique)
 					base.set_temporary_name("#{self}[#{description}]")
+					
+					# Store sampler options for later use
+					base.define_singleton_method(:sampler_options) {options}
 					
 					if block_given?
 						base.define_method(:run, &block)
@@ -67,7 +71,8 @@ module Sus
 					assertions.nested(self, identity: self.identity, isolated: true, measure: true) do |assertions|
 						instance = self.new(assertions)
 						
-						samples = Sampler.new
+						# Create sampler with options
+						samples = Sampler.new(**self.sampler_options)
 						repeats = Repeats.new(samples)
 						
 						instance.around do

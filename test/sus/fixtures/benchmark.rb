@@ -25,6 +25,14 @@ describe Sus::Fixtures::Benchmark do
 			sleep(0.0001)
 		end
 	end
+
+	measure "fast", minimum: 100 do |repeats|
+		repeats.times do
+			sleep(0.0001)
+		end
+
+		expect(repeats.sampler.size).to be >= 100
+	end
 	
 	describe Sus::Fixtures::Benchmark::Measure do
 		let(:instance) {subject.build(Sus.base, "test")}

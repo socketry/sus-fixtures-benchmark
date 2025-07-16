@@ -15,6 +15,9 @@ module Sus
 				def initialize(sampler)
 					@sampler = sampler
 				end
+
+				# @attribute [Sampler] The sampler that collects timing data.
+				attr :sampler
 				
 				# Samples the execution time of the given block and adds the result to the sampler.
 				# @parameter block [Proc] The block to benchmark.
@@ -43,6 +46,12 @@ module Sus
 						@count = count
 					end
 					
+					# @attribute [Sampler] The sampler that collects timing data.
+					attr :sampler
+
+					# @attribute [Integer] The number of times to execute the block.
+					attr :count
+
 					# Samples the execution time of the given block and adds the result to the sampler.
 					# @parameter block [Proc] The block to benchmark.
 					private def sample!(block)
