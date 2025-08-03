@@ -1,5 +1,9 @@
 # Releases
 
+## Unreleased
+
+  - Fix links and add context.
+
 ## v0.2.0
 
   - Added `exactly(count)` method to `Sus::Fixtures::Benchmark::Repeats` which returns an `Exactly` instance for fixed-count benchmarking.
