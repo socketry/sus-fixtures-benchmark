@@ -1,4 +1,4 @@
-# Taking Measurements with Sus Fixtures Benchmark
+# Getting Started
 
 This guide explains how to use the `sus-fixtures-benchmark` gem to measure and benchmark code performance within your Sus test suite.
 
