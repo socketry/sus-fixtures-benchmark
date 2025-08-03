@@ -1,6 +1,6 @@
 # Releases
 
-## Unreleased
+## v0.2.1
 
   - Fix links and add context.
 

@@ -12,11 +12,15 @@ bundle add sus-fixtures-benchmark
 
 ## Usage
 
-Please see the [project documentation](https://suspecting.github.io/sus-fixtures-benchmark/) for more details.
+Please see the [project documentation](https://socketry.github.io/sus-fixtures-benchmark/) for more details.
 
 ## Releases
 
-Please see the [project releases](https://suspecting.github.io/sus-fixtures-benchmark/releases/index) for all releases.
+Please see the [project releases](https://socketry.github.io/sus-fixtures-benchmark/releases/index) for all releases.
+
+### v0.2.1
+
+  - Fix links and add context.
 
 ### v0.2.0
 
